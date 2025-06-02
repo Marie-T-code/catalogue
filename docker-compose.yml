@@ -1,0 +1,41 @@
+services:
+  php:
+    image: php:8.3-apache
+    container_name: php_lyon_autrement
+    ports:
+      - '8083:80' # on définit le port pour accéder à l'application (localhost:8000) - incrémenter si le port est déjà utilisé par un autre projet
+    volumes:
+      - ./PHP:/var/www/html # on monte le dossier courant dans le dossier /var/www/html du container
+    build:
+      context: .
+      dockerfile: Dockerfile
+
+  db:
+    image: postgis/postgis:15-3.3
+    container_name: lyon_autrement_db
+    environment:
+      POSTGRES_PASSWORD: test
+      POSTGRES_USER: test
+      POSTGRES_DB: lyon_autrement_db
+      # Variables pour résoudre les problèmes d'initialisation
+      PGUSER: test
+      POSTGRES_HOST_AUTH_METHOD: trust
+    volumes:
+      - ./DATA:/docker-entrypoint-initdb.d # création de la table et insertion des données à partir du fichier users_postgres.sql
+    ports:
+      - '5433:5432' #  incrémenter si le port est déjà utilisé par un autre projet
+  pgadmin:
+    image: dpage/pgadmin4
+    container_name: lyon_autrement_pgadmin
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@admin.com
+      PGADMIN_DEFAULT_PASSWORD: admin
+      # Simplification de la configuration - pas de fichiers externes
+      PGADMIN_CONFIG_SERVER_MODE: 'False'
+      PGADMIN_CONFIG_MASTER_PASSWORD_REQUIRED: 'False'
+    ports:
+      - '8084:80' # on définit le port pour accéder à pgadmin (localhost:8082) - incrémenter si le port est déjà utilisé par un autre projet
+    # volumes:
+    #   - ./data/servers.json:/pgadmin4/servers.json
+    depends_on:
+      - db
