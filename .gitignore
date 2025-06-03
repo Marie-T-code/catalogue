@@ -1,0 +1,32 @@
+# === FICHIERS SYSTÈME / TEMPORAIRES ===
+.DS_Store
+Thumbs.db
+*.bak
+*.tmp
+*.log
+*.swp
+*.~*
+*.geojson~
+*.sql~
+
+# === SHAPEFILES QGIS (fichiers générés en série) ===
+*.shp
+*.shx
+*.dbf
+*.prj
+*.cpg
+*.qgs~
+*.qgz~
+.qgis2/
+.qgis3/
+.qgd
+.qgd-wal
+
+
+# === VS CODE ===
+.vscode/
+.history/
+
+# === GIT ===
+*.orig
+*.rej

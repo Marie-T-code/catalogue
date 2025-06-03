@@ -1,8 +1,26 @@
-CREATE TABLE test_table (
-  id SERIAL PRIMARY KEY,
-  nom VARCHAR(100),
-  description TEXT
+CREATE EXTENSION IF NOT EXISTS postgis;
+
+CREATE TABLE poi (
+    id INTEGER GENERATED ALWAYS AS IDENTITY PRIMARY KEY, 
+    id_qgis INTEGER, 
+    nom TEXT, 
+    type TEXT, 
+    address_name TEXT,
+    address_code_postal TEXT, 
+    address_locality TEXT, 
+    description TEXT, 
+    photo TEXT, 
+    geom geometry(Point, 4326)
 );
 
-INSERT INTO test_table (nom, description)
-VALUES ('Premier test', 'Insertion test depuis init.sql');
+CREATE TABLE parcs (
+    id INTEGER GENERATED ALWAYS AS IDENTITY PRIMARY KEY, 
+    id_qgis INTEGER, 
+    nom TEXT, 
+    numvoie TEXT, 
+    address_name TEXT, 
+    address_code_postal TEXT, 
+    address_locality TEXT, 
+    photo TEXT, 
+    geom geometry(Polygon, 4326)
+);
