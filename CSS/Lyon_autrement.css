@@ -1,0 +1,225 @@
+/* RESET CSS */
+
+/* 
+Applique le modèle de boîte border-box à tous les éléments, 
+y compris leurs pseudo-éléments ::before et ::after. 
+Cela rend le dimensionnement plus prévisible (padding et border inclus dans la largeur/hauteur).
+*/
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+/* 
+Réinitialise les marges et les paddings à 0 pour tous les éléments,
+ce qui élimine les styles par défaut incohérents entre navigateurs.
+Hérite aussi la police des éléments parents pour éviter les incohérences de police.
+*/
+* {
+    margin: 0;
+    padding: 0;
+    font: inherit;
+}
+
+/* 
+Indique que le site peut s’adapter automatiquement aux thèmes clair et sombre 
+selon les préférences de l’utilisateur.
+*/
+html {
+    color-scheme: dark light;
+    scroll-behavior: smooth;
+}
+
+/* 
+Assure que le corps de la page occupe au minimum toute la hauteur de la fenêtre.
+Utile pour des mises en page pleine hauteur (par exemple, en flex ou grid).
+*/
+body {
+    min-height: 100vh;
+}
+
+/* empêcher les rebonds en bord de scroll sur les scrolls verticaux en mobile */
+html, body {
+  overscroll-behavior: contain;
+}
+
+/* Accessibilité clavier */
+:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 2px;
+}
+
+/* Mini reset formulaire */
+button,
+input,
+textarea {
+  font: inherit;
+  background: none;
+  border: none;
+  color: inherit;
+}
+
+textarea{
+    resize:vertical;
+}
+
+button{
+    cursor:pointer;
+}
+
+/* 
+Assure que les médias s’affichent en bloc (pas inline par défaut) 
+et ne dépassent jamais la largeur de leur conteneur. 
+Cela évite les débordements indésirables.
+*/
+img, picture, svg, video {
+    display: block;
+    max-width: 100%;
+    box-sizing:border-box;
+}
+
+/* 
+Utilise la propriété text-wrap: balance pour améliorer l'équilibre visuel 
+des titres sur plusieurs lignes, évitant les sauts de ligne maladroits.
+*/
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    text-wrap: balance;
+}
+
+/* 
+Utilise text-wrap: pretty pour éviter les mots isolés en fin de paragraphe ou de ligne 
+("orphans") et améliorer la lisibilité.
+Fixe une largeur maximale de ligne (65 caractères environ), 
+ce qui améliore la lisibilité des textes longs.
+*/
+p,
+li,
+figcaption {
+    text-wrap: pretty;
+    max-width: 65ch;
+}
+
+/* overrride des animations */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  ::before,
+  ::after {
+    animation-delay: -1ms !important;
+    animation-duration: 1ms !important;
+    animation-iteration-count: 1 !important;
+    background-attachment: initial !important;
+    scroll-behavior: auto !important;
+    transition-duration: 1ms !important;
+    transition-delay: -1ms !important;
+  }
+}
+
+/* FONTS  */
+
+@font-face{
+  font-family: 'Cormorant Garamond';
+  src: url(../FONTS/CormorantGaramond-VariableFont_wght.ttf) format('truetype'); 
+  font-weight: 500 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face{
+  font-family: 'Cormorant Garamond';
+  src: url(../FONTS/CormorantGaramond-Italic-VariableFont_wght.ttf) format('truetype'); 
+  font-weight: 500 900;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face{
+  font-family: 'Source Sans 3'; 
+  src: url(../FONTS/SourceSans3-VariableFont_wght.ttf) format('truetype'); 
+  font-weight: 200-700;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* DEFINITION DES VARIABLES LYON AUTREMENT */
+
+:root{
+
+/* fond clair  */
+  --fond_clair: #F5F1E7;
+  --text_light: #2d2d2d; 
+  --boutons_light: #CE9E63;
+
+  /* general */
+  --couleur_fond_fonce: #6E5C4F;
+  --couleur_fond_clair: #E5D0B1;
+
+  /* dark mode  */
+  --fond_fonce: #262626;
+  --text_dark: #e7e7e7; 
+  --buttons_dark: #785428;
+
+  /* fonts  */
+  --font-title: 'Cormorant Garamond';
+  --font-UI:'Source Sans 3';
+
+  /* marges  */
+  --horizontal_space: 1.5rem; 
+}
+
+/* general  */
+
+h1, h2, h3 {
+  font-family: var(--font-title);
+}
+
+p, li, button {
+  font-family: var(--font-UI);
+}
+
+/* HEADER  */
+
+header{
+  background-color: var(--boutons_light);
+  position: relative;
+  display: flex; 
+  flex-flow: row nowrap; 
+  justify-content: space-between;
+  align-items:center;
+  gap: 0.75rem;
+  padding-inline: var(--horizontal_space);
+}
+.title_logo{
+  display: flex; 
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.logo{
+  max-width: 5rem;
+  margin: 0.5rem;
+}
+
+nav.contacts_header{
+  display:none;
+}
+
+
+nav.open{
+  display:block; 
+position: absolute; 
+right: 0.5rem;
+top: 6rem;
+}
+
+header nav ul{
+  list-style-type: none;
+  display: flex; 
+  gap: 0.5rem;
+  flex-flow: column nowrap; 
+
+}

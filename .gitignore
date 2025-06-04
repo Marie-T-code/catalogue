@@ -30,3 +30,7 @@ Thumbs.db
 # === GIT ===
 *.orig
 *.rej
+
+# === ignorer un dossier ===
+
+/images/fonds_de_carte/
