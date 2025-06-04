@@ -22,5 +22,5 @@ CREATE TABLE parcs (
     address_code_postal TEXT, 
     address_locality TEXT, 
     photo TEXT, 
-    geom geometry(Polygon, 4326)
+    geom geometry(MultiPolygon, 4326)
 );
