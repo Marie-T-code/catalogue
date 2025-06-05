@@ -5,8 +5,10 @@ Applique le modèle de boîte border-box à tous les éléments,
 y compris leurs pseudo-éléments ::before et ::after. 
 Cela rend le dimensionnement plus prévisible (padding et border inclus dans la largeur/hauteur).
 */
-*, *::before, *::after {
-    box-sizing: border-box;
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
 }
 
 /* 
@@ -15,9 +17,9 @@ ce qui élimine les styles par défaut incohérents entre navigateurs.
 Hérite aussi la police des éléments parents pour éviter les incohérences de police.
 */
 * {
-    margin: 0;
-    padding: 0;
-    font: inherit;
+  margin: 0;
+  padding: 0;
+  font: inherit;
 }
 
 /* 
@@ -25,8 +27,8 @@ Indique que le site peut s’adapter automatiquement aux thèmes clair et sombre
 selon les préférences de l’utilisateur.
 */
 html {
-    color-scheme: dark light;
-    scroll-behavior: smooth;
+  color-scheme: dark light;
+  scroll-behavior: smooth;
 }
 
 /* 
@@ -34,11 +36,12 @@ Assure que le corps de la page occupe au minimum toute la hauteur de la fenêtre
 Utile pour des mises en page pleine hauteur (par exemple, en flex ou grid).
 */
 body {
-    min-height: 100vh;
+  min-height: 100vh;
 }
 
 /* empêcher les rebonds en bord de scroll sur les scrolls verticaux en mobile */
-html, body {
+html,
+body {
   overscroll-behavior: contain;
 }
 
@@ -58,12 +61,12 @@ textarea {
   color: inherit;
 }
 
-textarea{
-    resize:vertical;
+textarea {
+  resize: vertical;
 }
 
-button{
-    cursor:pointer;
+button {
+  cursor: pointer;
 }
 
 /* 
@@ -71,10 +74,13 @@ Assure que les médias s’affichent en bloc (pas inline par défaut)
 et ne dépassent jamais la largeur de leur conteneur. 
 Cela évite les débordements indésirables.
 */
-img, picture, svg, video {
-    display: block;
-    max-width: 100%;
-    box-sizing:border-box;
+img,
+picture,
+svg,
+video {
+  display: block;
+  max-width: 100%;
+  box-sizing: border-box;
 }
 
 /* 
@@ -87,7 +93,7 @@ h3,
 h4,
 h5,
 h6 {
-    text-wrap: balance;
+  text-wrap: balance;
 }
 
 /* 
@@ -99,13 +105,14 @@ ce qui améliore la lisibilité des textes longs.
 p,
 li,
 figcaption {
-    text-wrap: pretty;
-    max-width: 65ch;
+  text-wrap: pretty;
+  max-width: 65ch;
 }
 
 /* overrride des animations */
 
 @media (prefers-reduced-motion: reduce) {
+
   *,
   ::before,
   ::after {
@@ -121,25 +128,25 @@ figcaption {
 
 /* FONTS  */
 
-@font-face{
+@font-face {
   font-family: 'Cormorant Garamond';
-  src: url(../FONTS/CormorantGaramond-VariableFont_wght.ttf) format('truetype'); 
+  src: url(../FONTS/CormorantGaramond-VariableFont_wght.ttf) format('truetype');
   font-weight: 500 900;
   font-style: normal;
   font-display: swap;
 }
 
-@font-face{
+@font-face {
   font-family: 'Cormorant Garamond';
-  src: url(../FONTS/CormorantGaramond-Italic-VariableFont_wght.ttf) format('truetype'); 
+  src: url(../FONTS/CormorantGaramond-Italic-VariableFont_wght.ttf) format('truetype');
   font-weight: 500 900;
   font-style: italic;
   font-display: swap;
 }
 
-@font-face{
-  font-family: 'Source Sans 3'; 
-  src: url(../FONTS/SourceSans3-VariableFont_wght.ttf) format('truetype'); 
+@font-face {
+  font-family: 'Source Sans 3';
+  src: url(../FONTS/SourceSans3-VariableFont_wght.ttf) format('truetype');
   font-weight: 200-700;
   font-style: normal;
   font-display: swap;
@@ -147,79 +154,282 @@ figcaption {
 
 /* DEFINITION DES VARIABLES LYON AUTREMENT */
 
-:root{
+:root {
 
-/* fond clair  */
-  --fond_clair: #F5F1E7;
-  --text_light: #2d2d2d; 
-  --boutons_light: #CE9E63;
+  /* fond clair  */
+  --fond: 231, 231, 231;
+  --text: 38, 38, 38;
+  --buttons-clair: 120, 84, 40;
+  --buttons-foncé: 206, 158, 99;
+  --couleur_fond_clair: 229, 208, 177;
+  --couleur_fond_fonce: 110, 92, 79;
+  --gris-buttons-clair: 160, 160, 160;
+  /* --gris-buttons-foncé: 100, 100, 100; */
 
-  /* general */
-  --couleur_fond_fonce: #6E5C4F;
-  --couleur_fond_clair: #E5D0B1;
-
-  /* dark mode  */
-  --fond_fonce: #262626;
-  --text_dark: #e7e7e7; 
-  --buttons_dark: #785428;
 
   /* fonts  */
   --font-title: 'Cormorant Garamond';
-  --font-UI:'Source Sans 3';
+  --font-UI: 'Source Sans 3';
 
   /* marges  */
-  --horizontal_space: 1.5rem; 
+  --horizontal_space: 1.5rem;
+}
+
+/* dark mode class */
+.darkMode {
+  --fond: 38, 38, 38;
+  --text: 231, 231, 231;
+  --buttons-clair: 206, 158, 99;
+  --buttons-foncé: 120, 84, 40;
+  --couleur_fond_clair: 110, 92, 79;
+  --couleur_fond_fonce: 229, 208, 177;
+  --gris-buttons-clair: 100, 100, 100;
+  /* --gris-buttons-foncé: 160, 160, 160; */
 }
 
 /* general  */
 
-h1, h2, h3 {
+body {
+  color: rgb(var(--text));
+}
+
+h1,
+h2,
+h3 {
   font-family: var(--font-title);
 }
 
-p, li, button {
+p,
+li,
+button {
   font-family: var(--font-UI);
 }
 
 /* HEADER  */
 
-header{
-  background-color: var(--boutons_light);
+header {
+  background-color: rgb(var(--couleur_fond_clair));
   position: relative;
-  display: flex; 
-  flex-flow: row nowrap; 
+  display: flex;
+  flex-flow: row nowrap;
   justify-content: space-between;
-  align-items:center;
+  align-items: center;
   gap: 0.75rem;
   padding-inline: var(--horizontal_space);
 }
-.title_logo{
-  display: flex; 
+
+header h2 {
+  text-align: center;
+}
+
+.title_logo {
+  display: flex;
   align-items: center;
   gap: 0.5rem;
 }
 
-.logo{
+.logo {
   max-width: 5rem;
   margin: 0.5rem;
 }
 
-nav.contacts_header{
-  display:none;
+nav.contacts_header {
+  display: none;
 }
 
-
-nav.open{
-  display:block; 
-position: absolute; 
-right: 0.5rem;
-top: 6rem;
+.nav_toggle_container {
+  display: flex;
+  flex-flow: column nowrap;
+  gap: 1rem;
 }
 
-header nav ul{
+nav.open {
+  display: block;
+  position: absolute;
+  right: 0.5rem;
+  top: 6rem;
+}
+
+header nav ul {
   list-style-type: none;
-  display: flex; 
+  display: flex;
   gap: 0.5rem;
-  flex-flow: column nowrap; 
+  flex-flow: column nowrap;
 
 }
+
+/* BOUTONS B&W  */
+
+.toggle-theme {
+  width: 50px;
+  height: 20px;
+  display: inline-block;
+  position: relative;
+  background: var(--text);
+  border-radius: 200px;
+  box-shadow: inset 0px 5px 15px rgba(var(--fond), 0.4), inset 0px -5px 15px rgba(var(--text), 0.4);
+  transition: all 0.3s ease;
+}
+
+.toggle-theme:after {
+  content: "";
+  width: 18px;
+  height: 18px;
+  position: absolute;
+  top: 1px;
+  left: 1px;
+  background: linear-gradient(180deg, (rgb(--buttons-clair)), rgb(var(--buttons-foncé)));
+  border-radius: 180px;
+  box-shadow: 0px 5px 10px rgba(var(--text) 0.2);
+  transition: all 0.3s ease;
+}
+
+.toggle-theme.active {
+  background-color: rgb(var(--gris-buttons-clair));
+}
+
+.toggle-theme.active::after {
+  left: 49px;
+  transform: translateX(-100%);
+  width: 26px;
+  border-radius: 20px;
+  background: linear-gradient(180deg, rgb(var(--fond)), rgb(var(--buttons-clair)));
+  animation: slideStretch 0.7s ease forwards;
+}
+
+@keyframes slideStretch {
+  0% {
+    left: 21px;
+    width: 18px;
+    border-radius: 50%;
+  }
+
+  50% {
+    left: 27px;
+    width: 26px;
+    border-radius: 16px;
+  }
+
+  100% {
+    left: 49px;
+    transform: translateX(-100%);
+    width: 18px;
+    border-radius: 50%;
+  }
+}
+
+.toggle-theme.reverse::after {
+  animation: slideBack 0.9s ease forwards;
+  background: linear-gradient(180deg, rgb(var(--buttons-clair)), rgb(var(--gris-buttons-clair)));
+}
+
+@keyframes slideBack {
+  0% {
+    left: 53px;
+    transform: translateX(-100%);
+    width: 18px;
+    border-radius: 50%;
+  }
+
+  50% {
+    left: 27px;
+    width: 26px;
+    border-radius: 16px;
+  }
+
+  100% {
+    left: 1px;
+    transform: translateX(0);
+    width: 18px;
+    border-radius: 50%;
+  }
+}
+
+.toggle-theme svg {
+  position: absolute;
+  width: 12px;
+  top: 4px;
+  left: 4px;
+  z-index: 2;
+}
+
+.toggle-theme svg.sun {
+  left: 35px;
+  color: rgb(var(--fond));
+  transition: 0.3s;
+}
+
+.toggle-theme svg.moon {
+  color: rgb(var(--text));
+  transition: 0.3s;
+}
+
+/* SECTION TITRES  */
+
+section.title_main {
+  padding-block: 0.8rem;
+  padding-inline: var(--horizontal_space);
+  min-height: 30vh;
+  background-image: linear-gradient(to bottom, rgb(var(--couleur_fond_clair)), rgb(var(--fond)));
+  display: flex;
+  gap: 1rem;
+  flex-flow: column nowrap;
+}
+
+h1 {
+  font-size: 2rem;
+  font-weight: 900;
+  font-style: italic;
+  text-align: center;
+}
+
+.title_main h2 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  font-style: italic;
+  text-align: center;
+}
+
+
+/* MAP */
+
+section.map {
+  min-height: 70vh;
+  background-image: url(../images/fond_de_carte_save.jpeg);
+}
+
+/* FOOTER */
+
+footer {
+  padding-block: 0.8rem;
+  padding-inline: var(--horizontal_space);
+  background-color: rgb(var(--couleur_fond_clair));
+}
+.liens_footer{
+    display: flex;
+    gap: 2rem;
+}
+footer li {
+  list-style-type: none;
+  font-size: 0.75rem;
+  font-weight: 400; 
+}
+
+.mentions_legales li:nth-child(2),
+.mentions_legales li:nth-child(3) {
+  display: none;
+}
+
+footer ul {
+  display: flex;
+  flex-flow: column nowrap;
+
+}
+
+.bottom{
+  margin-bottom: 1rem;;
+}
+
+/* * {
+  outline: 1px solid red; 
+} */
