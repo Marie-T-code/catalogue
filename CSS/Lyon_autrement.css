@@ -394,8 +394,12 @@ h1 {
 /* MAP */
 
 section.map {
-  min-height: 70vh;
-  background-image: url(../images/fond_de_carte_save.jpeg);
+  min-height: 100vh;
+  /* background-image: url(../images/fond_de_carte_save.jpeg); */
+}
+
+#map{
+  height: 100vh;
 }
 
 /* FOOTER */

@@ -34,3 +34,4 @@ Thumbs.db
 # === ignorer un dossier ===
 
 /images/fonds_de_carte/
+/tiles/
