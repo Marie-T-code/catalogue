@@ -24,3 +24,5 @@ CREATE TABLE parcs (
     photo TEXT, 
     geom geometry(MultiPolygon, 4326)
 );
+
+-- ATTENTION revoir la création de table parcs : modification de la structure dans insert_parcs.php

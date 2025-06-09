@@ -34,16 +34,63 @@ L.control.layers(baseMaps).addTo(map);
 
 
 // les POI 
+  const typeIcons = {
+  'EQUIPEMENT': '../images/carriage.svg',
+  // Ajoute d’autres types si besoin
+};
+
 
 fetch('../DATA/export_clean_all_poi.geojson')
   .then(response => response.json())
   .then(data => {
-    L.geoJSON(data, {
+    // 1. Initialise le groupe de clusters
+    const markers = L.markerClusterGroup();
+
+    // 2. Crée une couche GeoJSON classique
+    const geojsonLayer = L.geoJSON(data, {
+      pointToLayer: function (feature, latlng) {
+        const type = feature.properties.type || 'inconnu';
+
+        if (type === 'EQUIPEMENT') {
+          return L.marker(latlng, {
+            icon: L.icon({
+              iconUrl: typeIcons[type],
+              iconSize: [40, 40],
+              iconAnchor: [20, 40],
+              popupAnchor: [0, -35]
+            })
+          });
+        }
+
+        return L.marker(latlng); // marqueur par défaut
+      },
+
       onEachFeature: function (feature, layer) {
         const nom = feature.properties.nom || 'Sans nom';
         const description = feature.properties.description || '';
-        layer.bindPopup(`<strong>${nom}</strong><br>${description}`);
+        const type = feature.properties.type || 'inconnu';
+
+        const iconPath = typeIcons[type] || null;
+        const iconHtml = iconPath
+          ? `<img src="${iconPath}" alt="${type}" class="popup-icon">`
+          : '';
+
+        const popupContent = `
+          <div class="popup-content popup-${type.toLowerCase()}">
+            ${iconHtml}
+            <strong>${nom}</strong><br>${description}
+          </div>
+        `;
+
+        layer.bindPopup(popupContent);
       }
-    }).addTo(map);
+    });
+
+    // 3. Ajoute la couche GeoJSON dans le cluster
+    markers.addLayer(geojsonLayer);
+
+    // 4. Ajoute le cluster à la carte
+    map.addLayer(markers);
   })
   .catch(error => console.error('Erreur de chargement GeoJSON :', error));
+
