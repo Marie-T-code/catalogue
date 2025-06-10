@@ -1,3 +1,6 @@
+console.log('map.js loaded');
+console.log("🧠 map.js VIVANT", window.location.href);
+
 var map = L.map('map').setView([45.761, 4.83], 15);
 const osm = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
     minZoom: 14,
@@ -6,7 +9,7 @@ const osm = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
 }).addTo(map);
 
 
-const light = L.tileLayer('../tiles/desktop_light/mapnik/{z}/{x}/{y}.png', {
+const light = L.tileLayer('tiles/desktop_light/mapnik/{z}/{x}/{y}.png', {
   minZoom: 15,
   maxZoom: 16,
   tileSize: 256,
@@ -15,7 +18,11 @@ const light = L.tileLayer('../tiles/desktop_light/mapnik/{z}/{x}/{y}.png', {
   opacity: 1
 }).addTo(map);
 
-const dark = L.tileLayer('../tiles/desktop_dark/{z}/{x}/{y}.png', {
+light.on('tileerror', e => {
+  console.error('🟥 Erreur de tuile LIGHT:', e.tile.src);
+});
+
+const dark = L.tileLayer('tiles/desktop_dark/{z}/{x}/{y}.png', {
   minZoom: 15,
   maxZoom: 16,
   attribution: 'Carte Darmet 1850 (dark)',
@@ -35,12 +42,12 @@ L.control.layers(baseMaps).addTo(map);
 
 // les POI 
   const typeIcons = {
-  'EQUIPEMENT': '../images/carriage.svg',
+  'EQUIPEMENT': 'images/carriage.svg',
   // Ajoute d’autres types si besoin
 };
 
 
-fetch('../DATA/export_clean_all_poi.geojson')
+fetch('PHP/DATA/export_clean_all_poi.geojson')
   .then(response => response.json())
   .then(data => {
     // 1. Initialise le groupe de clusters
@@ -93,4 +100,15 @@ fetch('../DATA/export_clean_all_poi.geojson')
     map.addLayer(markers);
   })
   .catch(error => console.error('Erreur de chargement GeoJSON :', error));
+
+  document.addEventListener('themeChanged', (e) => {
+  const mode = e.detail.mode;
+  if (mode === 'dark') {
+    map.removeLayer(light);
+    map.addLayer(dark);
+  } else {
+    map.removeLayer(dark);
+    map.addLayer(light);
+  }
+});
 

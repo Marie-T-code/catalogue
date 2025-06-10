@@ -1,9 +1,14 @@
 <?php
-$host = 'db'; 
-$dbname = 'lyon_autrement_db';
-$user = 'test';
-$password = 'test';
+// $host = 'db'; 
+// $dbname = 'lyon_autrement_db';
+// $user = 'test';
+// $password = 'test';
+// valeurs docker
 
+$host = 'localhost';
+$dbname = 'lyon_autrement';
+$user = 'postgres';
+$password = 'T_Tey';
 
 try{
     $pdo = new PDO("pgsql:host=$host;port=5432;dbname=$dbname", $user, $password);

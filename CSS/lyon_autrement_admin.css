@@ -1,0 +1,77 @@
+.title_logo {
+    display: block;
+    width: 5rem;
+}
+
+.title_logo svg {
+    width: 5rem;
+    height: auto;
+}
+
+header {
+    display: flex;
+}
+
+header nav {
+    width: 50rem;
+}
+
+header nav ul {
+    display: flex;
+    flex-flow: row nowrap;
+}
+
+li {
+    flex-grow: 1;
+    flex-basis: 0;
+}
+
+table {
+    border: 1px solid rgb(var(--couleur_fond_fonce));
+    border-collapse: collapse;
+    width: 90%;
+    margin: 0 auto;
+    font-size: 1rem;
+    padding: var(--horizontal_space);
+    background-color: rgb(var(--couleur_fond_clair));
+}
+
+
+th, td {
+  padding: 0.6rem 1rem;
+  text-align: left;
+  word-break: break-word;
+  overflow-wrap: anywhere;
+  border: 1px solid rgb(var(--gris-buttons-clair));
+}
+
+th {
+  background-color: rgb(var(--couleur_fond_clair));
+  font-weight: bold;
+  color: rgb(var(--text));
+}
+
+tr:nth-child(even) {
+  background-color: rgba(var(--couleur_fond_clair), 0.3);
+}
+
+.btn {
+  display: inline-block;
+  margin: 2rem; 
+  padding: 0.5rem 1rem;
+  background-color: rgb(var(--buttons-clair));
+  color: rgb(var(--fond));
+  text-decoration: none;
+  border-radius: 6px;
+  font-weight: bold;
+  transition: background-color 0.2s ease;
+  text-align: center;
+}
+
+.btn:hover {
+  background-color: rgb(var(--gris-buttons-clair));
+}
+
+h1{
+    margin: 2rem;
+}

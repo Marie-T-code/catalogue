@@ -234,12 +234,12 @@ header h2 {
   color: rgb(var(--text));
 }
 
-stop:first-child{
-  stop-color:rgba(var(--fond)) !important;
+stop:first-child {
+  stop-color: rgba(var(--fond)) !important;
 }
 
-stop:last-child{
-  stop-color:rgb(var(--fond)) !important;
+stop:last-child {
+  stop-color: rgb(var(--fond)) !important;
 }
 
 nav.contacts_header {
@@ -354,6 +354,8 @@ header nav ul {
   }
 }
 
+
+
 .toggle-theme svg {
   position: absolute;
   width: 12px;
@@ -406,14 +408,14 @@ section.map {
   min-height: 90vh;
 }
 
-#map{
+#map {
   height: 100vh;
 }
 
 /* MAP TESTS  */
 
 /* Base du cluster */
-.leaflet-cluster-icon, 
+.leaflet-cluster-icon,
 .marker-cluster div {
   background-color: #d8cbb2;
   border: 1px solid #7a644d;
@@ -448,14 +450,16 @@ footer {
   padding-inline: var(--horizontal_space);
   background-color: rgb(var(--couleur_fond_clair));
 }
-.liens_footer{
-    display: flex;
-    gap: 2rem;
+
+.liens_footer {
+  display: flex;
+  gap: 2rem;
 }
+
 footer li {
   list-style-type: none;
   font-size: 0.75rem;
-  font-weight: 400; 
+  font-weight: 400;
 }
 
 .mentions_legales li:nth-child(2),
@@ -469,10 +473,81 @@ footer ul {
 
 }
 
-.bottom{
-  margin-bottom: 1rem;;
+.bottom {
+  margin-bottom: 1rem;
+  ;
 }
 
 /* * {
   outline: 1px solid red; 
 } */
+
+@media (min-width: 1024px) {
+
+ .toggle-theme {
+    width: 6.25rem;  /* 100px */
+    height: 2.5rem;   /* 40px */
+  }
+
+  .toggle-theme:after {
+    width: 2.25rem;   /* 36px */
+    height: 2.25rem;
+    top: 0.125rem;    /* 2px */
+    left: 0.125rem;
+  }
+
+  .toggle-theme.active::after {
+    left: 6.125rem;   /* 98px */
+    width: 3.25rem;   /* 52px */
+    border-radius: 2.5rem;
+  }
+
+  @keyframes slideStretch {
+    0% {
+      left: 2.625rem;    /* 42px */
+      width: 2.25rem;    /* 36px */
+      border-radius: 50%;
+    }
+    50% {
+      left: 3.375rem;    /* 54px */
+      width: 3.25rem;    /* 52px */
+      border-radius: 1.5rem;
+    }
+    100% {
+      left: 6.125rem;    /* 98px */
+      transform: translateX(-100%);
+      width: 2.25rem;
+      border-radius: 50%;
+    }
+  }
+
+  @keyframes slideBack {
+    0% {
+      left: 6.625rem;    /* 106px */
+      transform: translateX(-100%);
+      width: 2.25rem;
+      border-radius: 50%;
+    }
+    50% {
+      left: 3.375rem;
+      width: 3.25rem;
+      border-radius: 1.5rem;
+    }
+    100% {
+      left: 0.125rem;
+      transform: translateX(0);
+      width: 2.25rem;
+      border-radius: 50%;
+    }
+  }
+
+  .toggle-theme svg {
+    width: 1.5rem;  /* 24px */
+    top: 0.5rem;    /* 8px */
+    left: 0.5rem;
+  }
+
+  .toggle-theme svg.sun {
+    left: 4.375rem; /* 70px */
+  }
+}

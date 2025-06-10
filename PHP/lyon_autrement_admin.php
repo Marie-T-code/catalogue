@@ -5,6 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lyon autrement page administrateur</title>
+    <link rel="stylesheet" href="../CSS/lyon_autrement.css">
+    <link rel="stylesheet" href="../CSS/lyon_autrement_admin.css">
 </head>
 
 <body>
@@ -24,18 +26,10 @@ $query_parcs->execute();
 $parcs = $query_parcs->fetchAll(PDO::FETCH_ASSOC);
 require("disconnect.php");
 ?>
-<header id="admin">
-     <nav>
-            <ul>
-                <li><a href="#ajout_poi">ajout POI</a></li>
-                <li><a href="#ajout_parcs">ajout PARCS</a></li>
-                <li>page utilisateur</li>
-            </ul>
-        </nav>
-    </header>
+    <?php include('header_admin.php'); ?>
     <h1>Lyon Autrement : page Administrateur</h1>
 
-    <table>
+    <table id=table_poi>
         <thead>
             <th>id_qgis</th>
             <th>nom</th>
@@ -71,9 +65,9 @@ require("disconnect.php");
             <?php endforeach ?>
         </tbody>
     </table>
-    <a id="ajout_poi" href="ajout_poi.php">ajouter un POI</a>
+    <a class="btn" id="ajout_poi" href="ajout_poi.php">ajouter un POI</a>
 
-      <table id="ajout_parcs">
+      <table id=table_parcs>
         <thead>
             <th>id_qgis</th>
             <th>nom</th>
@@ -105,7 +99,7 @@ require("disconnect.php");
             <?php endforeach ?>
         </tbody>
     </table>
-    <a href="ajout_parcs.php">ajouter un parc</a>
+    <a class="btn" id="ajout_parcs" href="ajout_parcs.php">ajouter un parc</a>
 </body>
 
 </html>

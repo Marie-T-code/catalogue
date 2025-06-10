@@ -18,9 +18,11 @@ toggleBtn.forEach(toggle => {
     if (isActive) {
       toggleBtn.forEach(t => t.classList.add('reverse'));
       document.body.classList.remove('darkMode');
+      document.dispatchEvent(new CustomEvent('themeChanged', { detail: { mode: 'light' } }));
     } else {
       toggleBtn.forEach(t => t.classList.add('active'));
       document.body.classList.add('darkMode');
+      document.dispatchEvent(new CustomEvent('themeChanged', { detail: { mode: 'dark' } }));
     }
   });
 });
