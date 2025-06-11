@@ -1,25 +1,27 @@
 <?php
 
-if ($_POST){
-    if(isset($_POST["id_qgis"]) 
-    && isset($_POST["nom"])
-    && isset($_POST["type"])  
-    && isset($_POST["adresse"]) 
-    && isset($_POST["CP"]) 
-    && isset($_POST["commune"]) 
-    && isset($_POST["description"]) 
-    && isset($_POST["photo"]) 
-    && isset($_POST["geometry"]) 
-// isset vérifie l’existence (y compris si vide), !empty vérifie aussi qu’il y a du contenu.
-    && !empty($_POST["id_qgis"])
-    && !empty($_POST["nom"])
-    && !empty($_POST["type"])
-    && !empty($_POST["adresse"])
-    && !empty($_POST["CP"])   
-    && !empty($_POST["commune"])
-    && !empty($_POST["description"]) 
-    && !empty($_POST["photo"])
-    && !empty($_POST["geometry"])){
+if ($_POST) {
+    if (
+        isset($_POST["id_qgis"])
+        && isset($_POST["nom"])
+        && isset($_POST["type"])
+        && isset($_POST["adresse"])
+        && isset($_POST["CP"])
+        && isset($_POST["commune"])
+        && isset($_POST["description"])
+        && isset($_POST["photo"])
+        && isset($_POST["geometry"])
+        // isset vérifie l’existence (y compris si vide), !empty vérifie aussi qu’il y a du contenu.
+        && !empty($_POST["id_qgis"])
+        && !empty($_POST["nom"])
+        && !empty($_POST["type"])
+        && !empty($_POST["adresse"])
+        && !empty($_POST["CP"])
+        && !empty($_POST["commune"])
+        && !empty($_POST["description"])
+        && !empty($_POST["photo"])
+        && !empty($_POST["geometry"])
+    ) {
         $id_qgis = strip_tags($_POST["id_qgis"]);
         $nom = strip_tags($_POST["nom"]);
         $type = strip_tags($_POST["type"]);
@@ -29,11 +31,11 @@ if ($_POST){
         $description = strip_tags($_POST["description"]);
         $photo = strip_tags($_POST["photo"]);
         $geometry = strip_tags($_POST["geometry"]);
-require_once("db.php"); 
-$sql = "INSERT INTO poi (id_qgis, nom, type, address_name, address_code_postal, address_locality, description, photo, geom)
+        require_once("db.php");
+        $sql = "INSERT INTO poi (id_qgis, nom, type, address_name, address_code_postal, address_locality, description, photo, geom)
 VALUES (:id_qgis, :nom, :type, :adresse, :cp, :commune, :description, :photo, ST_SetSRID(ST_GeomFromGeoJSON(:geometry), 4326));";
-$query = $pdo->prepare($sql);
-$query->bindValue(":id_qgis", $id_qgis, PDO::PARAM_STR); 
+        $query = $pdo->prepare($sql);
+        $query->bindValue(":id_qgis", $id_qgis, PDO::PARAM_STR);
         $query->bindValue(":nom", $nom, PDO::PARAM_STR);
         $query->bindValue(":type", $type, PDO::PARAM_STR);
         $query->bindValue(":adresse", $adresse, PDO::PARAM_STR);
@@ -42,10 +44,10 @@ $query->bindValue(":id_qgis", $id_qgis, PDO::PARAM_STR);
         $query->bindValue(":description", $description, PDO::PARAM_STR);
         $query->bindValue(":photo", $photo, PDO::PARAM_STR);
         $query->bindValue(":geometry", $geometry, PDO::PARAM_STR);
-$query->execute();
-require("disconnect.php");
-header("Location: lyon_autrement_admin.php");
-exit;
+        $query->execute();
+        require("disconnect.php");
+        header("Location: lyon_autrement_admin.php");
+        exit;
     }
 }
 ?>
@@ -60,9 +62,13 @@ exit;
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ajouter un POI</title>
+    <link rel="stylesheet" href="../CSS/lyon_autrement.css">
+    <link rel="stylesheet" href="../CSS/lyon_autrement_admin.css">
+    <link rel="stylesheet" href="../CSS/lyon_autrement_responsive.css">
 </head>
 
 <body>
+    <?php include('header_admin.php'); ?>
     <form method="post">
         <label for="id_qgis">ID</label>
         <input type="text" name="id_qgis" id="id_qgis" required>
@@ -81,7 +87,7 @@ exit;
         <label for="photo">photo</label>
         <input type="text" name="photo" id="photo" required>
         <label for="geometry">geometry</label>
-        <textarea name="geometry" id="geometry" required >{"type": "Point", "coordinates": [4.8357, 45.7640]}</textarea>
+        <textarea name="geometry" id="geometry" required>{"type": "Point", "coordinates": [4.8357, 45.7640]}</textarea>
         <!-- ATTENTION : le "geometry" attend des valeurs geoJson ! dans textarea entrer par exemple : {"type": "Point", "coordinates": [4.8357, 45.7640]} -->
         <input type="submit" value="Ajouter">
         <!-- ou bien
@@ -89,4 +95,5 @@ exit;
     </form>
     <a href="./lyon_autrement_admin.php">Retour à la liste</a>
 </body>
+
 </html>

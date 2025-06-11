@@ -1,5 +1,5 @@
-<?php 
-require_once ("db.php");
+<?php
+require_once("db.php");
 
 if ($_POST) {
     if (
@@ -58,45 +58,53 @@ if (
 
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Modifier un POI</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modifier un POI <?= $poi['id_qgis'] ?></title>
+    <link rel="stylesheet" href="../CSS/lyon_autrement.css">
+    <link rel="stylesheet" href="../CSS/lyon_autrement_admin.css">
+    <link rel="stylesheet" href="../CSS/lyon_autrement_responsive.css">
 </head>
+
 <body>
-<?php if (!empty($poi)): ?>
-<form method="post">
-    <label for="nom">Nom</label>
-    <input type="text" id="nom" name="nom" value="<?= htmlspecialchars($poi['nom'], ENT_QUOTES) ?>" required>
+    <?php include('header_admin.php'); ?>
+    <h1>Modifier le POI <?= $poi['id_qgis'] ?> – <?= htmlspecialchars($poi['nom']) ?? 'inconnu' ?></h1>
+    <?php if (!empty($poi)): ?>
+        <form method="post">
+            <label for="nom">Nom</label>
+            <input type="text" id="nom" name="nom" value="<?= htmlspecialchars($poi['nom'], ENT_QUOTES) ?>" required>
 
-    <label for="type">Type</label>
-    <input type="text" id="type" name="type" value="<?= htmlspecialchars($poi['type'], ENT_QUOTES) ?>" required>
+            <label for="type">Type</label>
+            <input type="text" id="type" name="type" value="<?= htmlspecialchars($poi['type'], ENT_QUOTES) ?>" required>
 
-    <label for="description">Description</label>
-    <textarea id="description" name="description" required><?= htmlspecialchars($poi['description'], ENT_QUOTES) ?></textarea>
+            <label for="description">Description</label>
+            <textarea id="description" name="description" required><?= htmlspecialchars($poi['description'], ENT_QUOTES) ?></textarea>
 
-    <label for="address_name">Adresse</label>
-    <input type="text" id="address_name" name="address_name" value="<?= htmlspecialchars($poi['address_name'], ENT_QUOTES) ?>">
+            <label for="address_name">Adresse</label>
+            <input type="text" id="address_name" name="address_name" value="<?= htmlspecialchars($poi['address_name'], ENT_QUOTES) ?>">
 
-    <label for="address_code_postal">Code postal</label>
-    <input type="text" id="address_code_postal" name="address_code_postal" value="<?= htmlspecialchars($poi['address_code_postal'], ENT_QUOTES) ?>">
+            <label for="address_code_postal">Code postal</label>
+            <input type="text" id="address_code_postal" name="address_code_postal" value="<?= htmlspecialchars($poi['address_code_postal'], ENT_QUOTES) ?>">
 
-    <label for="address_locality">Commune</label>
-    <input type="text" id="address_locality" name="address_locality" value="<?= htmlspecialchars($poi['address_locality'], ENT_QUOTES) ?>">
+            <label for="address_locality">Commune</label>
+            <input type="text" id="address_locality" name="address_locality" value="<?= htmlspecialchars($poi['address_locality'], ENT_QUOTES) ?>">
 
-    <label for="photo">URL Photo</label>
-    <input type="text" id="photo" name="photo" value="<?= htmlspecialchars($poi['photo'], ENT_QUOTES) ?>">
+            <label for="photo">URL Photo</label>
+            <input type="text" id="photo" name="photo" value="<?= htmlspecialchars($poi['photo'], ENT_QUOTES) ?>">
 
-    <label for="geometry">Géométrie (GeoJSON)</label>
-    <textarea id="geometry" name="geometry" required><?= htmlspecialchars($poi['geometry']) ?></textarea>
-    <small>Exemple : {"type": "Point", "coordinates": [4.8357, 45.7640]}</small>
+            <label for="geometry">Géométrie (GeoJSON)</label>
+            <textarea id="geometry" name="geometry" required><?= htmlspecialchars($poi['geometry']) ?></textarea>
+            <small>Exemple : {"type": "Point", "coordinates": [4.8357, 45.7640]}</small>
 
-    <input type="hidden" name="id_qgis" value="<?= htmlspecialchars($poi['id_qgis'], ENT_QUOTES) ?>">
-    <input type="submit" value="Modifier">
-</form>
-<a href="lyon_autrement_admin.php">Retour à la liste</a>
-<?php else: ?>
-<p>Le POI n’a pas été trouvé.</p>
-<?php endif; ?>
+            <input type="hidden" name="id_qgis" value="<?= htmlspecialchars($poi['id_qgis'], ENT_QUOTES) ?>">
+            <input aria-label="valider votre modification" type="submit" value="Modifier">
+        </form>
+        <a href="lyon_autrement_admin.php">Retour à la liste</a>
+    <?php else: ?>
+        <p>Le POI n’a pas été trouvé.</p>
+    <?php endif; ?>
 </body>
+
 </html>

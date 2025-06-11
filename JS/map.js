@@ -3,9 +3,9 @@ console.log("🧠 map.js VIVANT", window.location.href);
 
 var map = L.map('map').setView([45.761, 4.83], 15);
 const osm = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    minZoom: 14,
-    maxZoom: 17,
-    attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+  minZoom: 14,
+  maxZoom: 17,
+  attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
 }).addTo(map);
 
 
@@ -41,15 +41,30 @@ L.control.layers(baseMaps).addTo(map);
 
 
 // les POI 
-  const typeIcons = {
+const typeIcons = {
   'EQUIPEMENT': 'images/carriage.svg',
   // Ajoute d’autres types si besoin
 };
 
 
-fetch('PHP/DATA/export_clean_all_poi.geojson')
-  .then(response => response.json())
+fetch('../PHP/fetch_poi.php')
+  .then(response => {
+    if (!response.ok) {
+      throw new Error(`Erreur HTTP: ${response.status}`);
+    }
+    return response.json();
+  })
   .then(data => {
+    // Debug - regarde ce que tu reçois vraiment
+    console.log('Données reçues:', data);
+    console.log('Type de data:', typeof data);
+    console.log('data.features:', data.features);
+    // Vérifier si on a des données
+    if (!data.features || data.features.length === 0) {
+      console.warn('Aucune donnée trouvée');
+      alert('Aucun point d\'intérêt trouvé');
+      return;
+    }
     // 1. Initialise le groupe de clusters
     const markers = L.markerClusterGroup();
 
@@ -101,7 +116,7 @@ fetch('PHP/DATA/export_clean_all_poi.geojson')
   })
   .catch(error => console.error('Erreur de chargement GeoJSON :', error));
 
-  document.addEventListener('themeChanged', (e) => {
+document.addEventListener('themeChanged', (e) => {
   const mode = e.detail.mode;
   if (mode === 'dark') {
     map.removeLayer(light);
@@ -112,3 +127,43 @@ fetch('PHP/DATA/export_clean_all_poi.geojson')
   }
 });
 
+
+// LES PARCS 
+
+fetch('../PHP/fetch_parcs.php')
+  .then(response => {
+    if (!response.ok) {
+      throw new Error(`Erreur HTTP: ${response.status}`);
+    }
+    return response.json();
+  })
+  .then(data => {
+    // Debug - regarde ce que tu reçois vraiment
+    console.log('Données reçues:', data);
+    console.log('Type de data:', typeof data);
+    console.log('data.features:', data.features);
+    // Vérifier si on a des données
+    if (!data.features || data.features.length === 0) {
+      console.warn('Aucune donnée trouvée');
+      alert('Aucun parc trouvé');
+      return;
+    }
+  L.geoJSON(data, {
+    style: () => ({
+      className: 'layer-parcs', 
+      weight: 2,
+    }), 
+    onEachFeature: function (feature, layer) {
+      const nom = feature.properties.nom || 'Sans nom';
+      const adresse = feature.properties.address_name || '';
+      const photo = feature.properties.photo || 'inconnu';
+
+      const popupContent = `
+          <div class="popup-content popup-${adresse.toLowerCase()}">
+            <strong>${nom}</strong><br>${photo}
+          </div>
+        `;
+        layer.bindPopup(popupContent);
+    }
+  }).addTo(map);
+}); 

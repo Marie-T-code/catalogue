@@ -4,10 +4,10 @@
   </div>
 <nav>
     <ul>
-        <li><a href="#table_poi" class="admin-btn">Accéder à la table des POI</a></li>
-        <li><a href="#table_parcs" class="admin-btn">Accéder à la table des parcs</a></li>
-        <li><a href="#ajout_poi" class="admin-btn">Ajouter un POI</a></li>
-        <li><a href="#ajout_parcs" class="admin-btn">Ajouter un parc</a></li>
+        <li><a href="lyon_autrement_admin.php#table_poi" class="admin-btn">Accéder à la table des POI</a></li>
+        <li><a href="lyon_autrement_admin.php#table_parcs" class="admin-btn">Accéder à la table des parcs</a></li>
+        <li><a href="lyon_autrement_admin.php#ajout_poi" class="admin-btn">Ajouter un POI</a></li>
+        <li><a href="lyon_autrement_admin.php#ajout_parcs" class="admin-btn">Ajouter un parc</a></li>
         <li><a href="../index.php" class="admin-btn return">Retour utilisateur</a></li>
     </ul>
 </nav>
