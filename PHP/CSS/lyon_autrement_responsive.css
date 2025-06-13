@@ -1,0 +1,268 @@
+/* MEDIA QUERIES  */
+
+@media screen and (min-width: 768px) {
+
+    td {
+        padding: clamp(0.3rem, 2vw, 0.6rem) clamp(0.5rem, 4vw, 1rem);
+    }
+
+    nav.contacts_header {
+        display: flex;
+        flex-flow: column;
+    }
+
+    .burger_menu {
+        display: none;
+    }
+
+    .toggle-theme {
+        width: 5rem;
+        /* 80px */
+        height: 2.25rem;
+        /* 36px */
+    }
+
+    .toggle-theme:after {
+        width: 2rem;
+        /* 32px */
+        height: 2rem;
+        top: 0.125rem;
+        /* 2px */
+        left: 0.125rem;
+    }
+
+    .toggle-theme.active::after {
+        left: 4.875rem;
+        /* 78px */
+        width: 3rem;
+        /* 48px */
+        border-radius: 2rem;
+    }
+
+    @keyframes slideStretch {
+        0% {
+            left: 2.5rem;
+            width: 2rem;
+            border-radius: 50%;
+        }
+
+        50% {
+            left: 3rem;
+            width: 3rem;
+            border-radius: 1.25rem;
+        }
+
+        100% {
+            left: 4.875rem;
+            transform: translateX(-100%);
+            width: 2rem;
+            border-radius: 50%;
+        }
+    }
+
+    @keyframes slideBack {
+        0% {
+            left: 5.125rem;
+            transform: translateX(-100%);
+            width: 2rem;
+            border-radius: 50%;
+        }
+
+        50% {
+            left: 3rem;
+            width: 3rem;
+            border-radius: 1.25rem;
+        }
+
+        100% {
+            left: 0.125rem;
+            transform: translateX(0);
+            width: 2rem;
+            border-radius: 50%;
+        }
+    }
+
+    .toggle-theme svg {
+        width: 1.25rem;
+        /* 20px */
+        top: 0.5rem;
+        left: 0.5rem;
+    }
+
+    .toggle-theme svg.sun {
+        left: 3.75rem;
+        /* 60px */
+    }
+
+    /* footer  */
+
+
+    footer {
+        padding-block: 1.2rem;
+        padding-inline: var(--horizontal_space);
+        background-color: rgb(var(--couleur_fond_clair));
+    }
+
+    .liens_footer {
+        display: flex;
+        align-content: center;
+        gap: 3rem;
+    }
+
+    footer li {
+        list-style-type: none;
+        font-size: 0.75rem;
+        font-weight: 400;
+    }
+
+    .mentions_legales li:nth-child(2),
+    .mentions_legales li:nth-child(3) {
+        display: list-item;
+    }
+
+    footer ul {
+        display: flex;
+        flex-flow: column nowrap;
+        padding: 2rem;
+        gap: 1rem; 
+
+    }
+
+    .bottom {
+        margin-block: 1rem;
+    }
+}
+
+
+@media (min-width: 1024px) {
+
+
+    nav.contacts_header {
+        display: flex;
+        flex-flow: column;
+    }
+
+    .burger_menu {
+        display: none;
+    }
+
+
+    .title_logo {
+        min-width: 30rem;
+        width: 50rem;
+    }
+
+    .title_logo h2 {
+        font-size: 2rem;
+        flex: 1 1 auto;
+        text-align: start;
+    }
+
+    .nav_toggle_container {
+        flex-flow: row-reverse nowrap;
+        gap: 2rem;
+    }
+
+    .contacts_header ul {
+        flex-flow: row nowrap;
+        gap: 1rem;
+    }
+
+    ul li {
+        font-size: clamp(0.75rem, 1.5vw, 1.25rem);
+    }
+
+    /* BOUTON TOGGLE  */
+
+    .toggle-theme {
+        width: 6.25rem;
+        /* 100px */
+        height: 2.5rem;
+        /* 40px */
+    }
+
+    .toggle-theme:after {
+        width: 2.25rem;
+        /* 36px */
+        height: 2.25rem;
+        top: 0.125rem;
+        /* 2px */
+        left: 0.125rem;
+    }
+
+    .toggle-theme.active::after {
+        left: 6.125rem;
+        /* 98px */
+        width: 3.25rem;
+        /* 52px */
+        border-radius: 2.5rem;
+    }
+
+    @keyframes slideStretch {
+        0% {
+            left: 2.625rem;
+            /* 42px */
+            width: 2.25rem;
+            /* 36px */
+            border-radius: 50%;
+        }
+
+        50% {
+            left: 3.375rem;
+            /* 54px */
+            width: 3.25rem;
+            /* 52px */
+            border-radius: 1.5rem;
+        }
+
+        100% {
+            left: 6.125rem;
+            /* 98px */
+            transform: translateX(-100%);
+            width: 2.25rem;
+            border-radius: 50%;
+        }
+    }
+
+    @keyframes slideBack {
+        0% {
+            left: 6.625rem;
+            /* 106px */
+            transform: translateX(-100%);
+            width: 2.25rem;
+            border-radius: 50%;
+        }
+
+        50% {
+            left: 3.375rem;
+            width: 3.25rem;
+            border-radius: 1.5rem;
+        }
+
+        100% {
+            left: 0.125rem;
+            transform: translateX(0);
+            width: 2.25rem;
+            border-radius: 50%;
+        }
+    }
+
+    .toggle-theme svg {
+        width: 1.5rem;
+        /* 24px */
+        top: 0.5rem;
+        /* 8px */
+        left: 0.5rem;
+    }
+
+    .toggle-theme svg.sun {
+        left: 4.375rem;
+        /* 70px */
+    }
+
+    /* footer  */
+
+    contacts.footer {
+        flex: 1 1 auto;
+    }
+}

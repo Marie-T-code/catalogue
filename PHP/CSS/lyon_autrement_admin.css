@@ -1,0 +1,189 @@
+.title_logo {
+  display: block;
+  width: 5rem;
+}
+
+.title_logo svg {
+  width: 5rem;
+  height: auto;
+}
+
+header {
+  display: flex;
+  position: sticky;
+  top: 0;
+}
+
+header nav {
+  width: 50rem;
+}
+
+header nav ul {
+  display: flex;
+  flex-flow: row nowrap;
+}
+
+li {
+  flex-grow: 1;
+  flex-basis: 0;
+}
+
+/* LES TABLES */
+
+.table-wrapper {
+  max-width: 100%;
+  margin: var(--horizontal_space);
+  overflow-x: scroll;
+}
+
+table {
+  border: 1px solid rgb(var(--couleur_fond_fonce));
+  border-collapse: collapse;
+  width: 100%;
+  margin: var(--horizontal_space) auto;
+  font-size: 1rem;
+  padding: var(--horizontal_space);
+  background-color: rgb(var(--tableaux));
+}
+
+
+th,
+td {
+  padding: clamp(0.3rem, 2vw, 0.6rem) clamp(0.5rem, 4vw, 1rem);
+  text-align: left;
+  border: 1px solid rgb(var(--gris-buttons-clair));
+}
+
+th {
+  background-color: rgb(var(--tableaux));
+  font-weight: bold;
+  color: rgb(var(--text));
+}
+
+tr:nth-child(even) {
+  background-color: rgba(var(--tableaux), 0.3);
+}
+
+details summary {
+  cursor: pointer;
+  font-weight: bold;
+  color: rgb(var(--text));
+}
+
+td pre {
+  white-space: pre-wrap;
+  /* permet le retour à la ligne */
+  overflow-wrap: anywhere;
+  /* casse les mots très longs */
+  max-height: 10rem;
+  overflow-y: scroll;
+}
+
+/* les boutons  */
+
+.btn {
+  display: inline-block;
+  margin: 2rem;
+  padding: 0.5rem 1rem;
+  background-color: rgb(var(--buttons-clair));
+  color: rgb(var(--fond));
+  text-decoration: none;
+  border-radius: 6px;
+  font-size: clamp(1rem, 2.5vw, 1.25rem);
+  font-weight: bold;
+  transition: background-color 0.2s ease;
+  text-align: center;
+}
+
+.btn:hover {
+  background-color: rgb(var(--gris-buttons-clair));
+  color: rgb(var(--text));
+}
+
+/* LES TITRES  */
+
+section {
+  text-align: center;
+}
+
+h1 {
+  margin: 2rem;
+}
+
+h2 {
+  display: inline-block;
+  font-size: 2.125rem;
+  font-style: italic;
+  text-align: center;
+  border-bottom: solid 2px rgb(var(--buttons-clair));
+
+}
+
+/* LES FORMULAIRES  */
+
+form {
+  max-width: 90vw;
+  margin-inline: 5vw;
+  padding: clamp(1rem, 2vw, 1.5rem);
+  gap: clamp(0.75rem, 1.5vw, 1rem);
+  display: flex;
+  flex-flow: column nowrap;
+}
+
+fieldset {
+  padding: clamp(1.25rem, 3vw, 2rem);
+  display: flex;
+  gap: clamp(0.75rem, 1.5vw, 1rem);
+  flex-flow: column nowrap;
+  background-color: rgb(var(--form-fieldset));
+  flex: 1 1 auto;
+  border: none;
+}
+
+legend {
+  font-size: clamp(0.875rem, 2vw, 1rem);
+  padding-top: clamp(1rem, 2.5vw, 1.5rem);
+  border-bottom: 1px solid rgb(var(--couleur_fond_fonce));
+}
+
+.wrapper_form {
+  display: flex;
+  flex-flow: row wrap;
+  gap: clamp(1rem, 3vw, 2rem);
+}
+
+label,
+input,
+textarea {
+  padding: 0.125rem;
+}
+
+label {
+  background-color: rgb(var(--gris-buttons-clair));
+  color: rgb(var(--fond));
+}
+
+input,
+textarea {
+  background-color: rgb(var(--fond));
+  border: none;
+}
+
+input[type="submit"] {
+  padding: clamp(0.875rem, 2vw, 1rem);
+  background-color: rgb(var(--couleur_fond_fonce));
+  color: rgb(var(--fond));
+  min-width: 10%;
+  align-self: center;
+}
+
+input:focus {
+  border: none;
+  border-bottom: 1px solid rgb(var(--couleur_fond_fonce));
+  outline: none;
+}
+
+textarea:focus {
+  border-bottom: 1px solid rgb(var(--couleur_fond_fonce));
+  outline: none;
+}
