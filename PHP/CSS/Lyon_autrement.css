@@ -167,10 +167,14 @@ figcaption {
   --tableaux: 230, 215, 193;
   --form-fieldset: 198, 176, 142;
   /* --gris-buttons-foncé: 100, 100, 100; */
-  --map-petit-clusters: 229, 208, 177;
-  --map-moyen-clusters: 198, 176, 142;
-  --map-gros-clusters: 132, 113, 84;
+  --map-petit-clusters:  25, 44, 76;
+  --map-moyen-clusters: 18, 30, 48;
+  --map-gros-clusters: 10, 13, 20;
 
+
+  /* map  */
+  --parcs-contours: 107, 115, 55;
+  --parcs-fond: 169, 181, 103;
 
   /* fonts  */
   --font-title: 'Cormorant Garamond';
@@ -190,10 +194,12 @@ figcaption {
   --couleur_fond_fonce: 229, 208, 177;
   --gris-buttons-clair: 100, 100, 100;
   --tableaux: 96, 82, 71;
-  --map-petit-clusters: 229, 208, 177;
-  --map-moyen-clusters: 198, 176, 142;
-  --map-gros-clusters: 132, 113, 84;
+  --map-petit-clusters: 222, 186, 126;
+  --map-moyen-clusters: 193, 150, 92;
+  --map-gros-clusters: 132, 93, 45;
   /* --gris-buttons-foncé: 160, 160, 160; */
+  --parcs-contours: 177,163,87;
+  --parcs-fond: 240, 225, 160;
 }
 
 /* general  */
@@ -468,6 +474,19 @@ footer {
   gap: 2rem;
 }
 
+footer nav a,
+footer nav a:link,
+footer nav a:visited,
+footer nav a:hover,
+footer nav a:focus,
+footer nav a:active {
+  text-align: start;
+  color: rgb(var(--text));
+  padding: 0;
+  margin: 0;
+  text-decoration: none;
+}
+
 footer li {
   list-style-type: none;
   font-size: 0.75rem;
@@ -485,8 +504,12 @@ footer ul {
 
 }
 
+.reseaux_sociaux ul li {
+  display: flex;
+  gap: 0.5rem;
+}
+
 .bottom {
   margin-bottom: 1rem;
   ;
 }
-

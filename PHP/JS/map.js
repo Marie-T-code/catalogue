@@ -4,7 +4,7 @@ console.log("🧠 map.js VIVANT", window.location.href);
 var map = L.map('map').setView([45.761, 4.83], 15);
 const osm = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
   minZoom: 14,
-  maxZoom: 17,
+  maxZoom: 16,
   attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
 }).addTo(map);
 
@@ -30,7 +30,7 @@ const dark = L.tileLayer('tiles/desktop_dark/{z}/{x}/{y}.png', {
   noWrap: true
 });
 
-// toggle darl/Light maps
+// toggle dark/Light maps
 
 const baseMaps = {
   "Light": light,
@@ -43,7 +43,7 @@ L.control.layers(baseMaps).addTo(map);
 // les POI 
 const typeIcons = {
   'EQUIPEMENT': 'images/carriage.svg',
-  // Ajoute d’autres types si besoin
+  // le reste à ajouter quand temps 
 };
 
 
@@ -91,19 +91,26 @@ fetch('../fichiers_php/fetch_poi.php')
         const nom = feature.properties.nom || 'Sans nom';
         const description = feature.properties.description || '';
         const type = feature.properties.type || 'inconnu';
+        const photo = feature.properties.photo || 'inconnu'; // <-- tu avais oublié aussi cette ligne ici 👀
 
         const iconPath = typeIcons[type] || null;
         const iconHtml = iconPath
           ? `<img src="${iconPath}" alt="${type}" class="popup-icon">`
           : '';
 
-        const popupContent = `
-          <div class="popup-content popup-${type.toLowerCase()}">
-            ${iconHtml}
-            <strong>${nom}</strong><br>${description}
-          </div>
-        `;
+        let imgHTMLPhoto = '';
+        if (photo && photo !== 'inconnu') {
+          imgHTMLPhoto = `<img src="${photo}" alt="Photo de ${nom}" class="popup-img">`;
+        }
 
+        const popupContent = `
+    <div class="popup-content popup-${type.toLowerCase()}">
+      ${iconHtml}
+      <h3>${nom}</h3>
+      <p>${description}</p>
+      ${imgHTMLPhoto}
+    </div>
+  `;
         layer.bindPopup(popupContent);
       }
     });
@@ -125,6 +132,15 @@ document.addEventListener('themeChanged', (e) => {
     map.removeLayer(dark);
     map.addLayer(light);
   }
+  setTimeout(() => {
+    document.querySelectorAll('.leaflet-popup').forEach(popup => {
+      if (mode === 'dark') {
+        popup.classList.add('darkMode');
+      } else {
+        popup.classList.remove('darkMode');
+      }
+    });
+  }, 50);
 });
 
 
@@ -150,17 +166,26 @@ fetch('../fichiers_php/fetch_parcs.php')
     }
     L.geoJSON(data, {
       style: () => ({
-        className: 'layer-parcs',
         weight: 2,
       }),
       onEachFeature: function (feature, layer) {
+        layer.on('add', function () {
+          const elParcs = layer.getElement();
+          if (elParcs) elParcs.classList.add('style_parcs');
+        });
         const nom = feature.properties.nom || 'Sans nom';
         const adresse = feature.properties.address_name || '';
         const photo = feature.properties.photo || 'inconnu';
 
+        let imgHTML = '';
+        if (photo && photo !== 'inconnu') {
+          imageHTML = `<img src="${photo}" alt="Photo de ${nom}" class="popup-img">`;
+        }
+
         const popupContent = `
-          <div class="popup-content popup-${adresse.toLowerCase()}">
-            <strong>${nom}</strong><br>${photo}
+          <div class="popup_content popup-${adresse.toLowerCase()}">
+           <h3 class="popup_text">${nom}</h3>
+           <img src="${imgHTML}">
           </div>
         `;
         layer.bindPopup(popupContent);

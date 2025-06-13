@@ -60,15 +60,22 @@
             <section class="liens_footer">
                 <nav class="mentions_legales">
                     <ul>
-                        <li><a href=""></a>Mentions Légales 2025</a></li>
+                        <li><a href="#">Mentions Légales 2025</a></li>
                         <li>@2025 Marie Thomas “Lyon autrement”</li>
-                        <li>fonds de carte : https://gallica.bnf.fr (domaine public)</li>
+                        <li>fonds de carte : <a href="https://gallica.bnf.fr" target="_blank">https://gallica.bnf.fr (domaine public)</a></li>
                     </ul>
                 </nav>
                 <nav class="reseaux_sociaux">
                     <ul>
-                        <li>Facebook</li>
-                        <li>Linkedin</li>
+                        <li>
+                            <div class="logo_rs">
+                                <i class="fa-brands fa-facebook-f"></i>
+                            </div>
+                            <a href="#">Facebook</a></li>
+                        <li>
+                            <div class="logo_rs"><i class="fa-brands fa-linkedin-in"></i>
+                            </div>
+                            <a href="https://www.linkedin.com/in/marie-thomas-92b93292/" target="_blank">Linkedin</a></li>
                     </ul>
                 </nav>
                 <nav class="contacts_footer">
