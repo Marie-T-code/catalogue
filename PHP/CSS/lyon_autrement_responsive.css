@@ -2,6 +2,10 @@
 
 @media screen and (min-width: 768px) {
 
+    h1 {
+        font-size: 3rem;
+    }
+
     td {
         padding: clamp(0.3rem, 2vw, 0.6rem) clamp(0.5rem, 4vw, 1rem);
     }
@@ -124,7 +128,7 @@
         display: flex;
         flex-flow: column nowrap;
         padding: 2rem;
-        gap: 1rem; 
+        gap: 1rem;
 
     }
 
@@ -135,6 +139,10 @@
 
 
 @media (min-width: 1024px) {
+
+    h1 {
+        font-size: 4rem;
+    }
 
 
     nav.contacts_header {

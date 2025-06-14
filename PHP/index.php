@@ -53,7 +53,33 @@
         </section>
         <section class="map">
             <div id="map">
-
+                <div class="map_legend" role="region" aria-labelledby="legend-title">
+                    <h3 id="legend-title">Légende</h3>
+                    <h4>Les points d'intérêts</h4>
+                    <ul>
+                        <li>
+                            <div class="legend_wrapper">
+                                <div class="popups_legende"><img src="images/carriage.svg" alt="marqueur 'équipements'"></div>
+                                <p>Equipements</p>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="legend_wrapper">
+                                <div class="popups_legende"><img src="images/marker-icon-leaflet.png" alt="marqueur Leaflet"></div>
+                                <p>Autres points d'intérêts</p>
+                            </div>
+                        </li>
+                    </ul>
+                    <h4>Les parcs</h4>
+                    <ul>
+                        <li>
+                            <div class="legend_wrapper">
+                                <div class="popups_legende_parcs"></div>
+                                <p>Parcs et Jardins</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
             </div>
         </section>
         <footer>
@@ -71,11 +97,13 @@
                             <div class="logo_rs">
                                 <i class="fa-brands fa-facebook-f"></i>
                             </div>
-                            <a href="#">Facebook</a></li>
+                            <a href="#">Facebook</a>
+                        </li>
                         <li>
                             <div class="logo_rs"><i class="fa-brands fa-linkedin-in"></i>
                             </div>
-                            <a href="https://www.linkedin.com/in/marie-thomas-92b93292/" target="_blank">Linkedin</a></li>
+                            <a href="https://www.linkedin.com/in/marie-thomas-92b93292/" target="_blank">Linkedin</a>
+                        </li>
                     </ul>
                 </nav>
                 <nav class="contacts_footer">

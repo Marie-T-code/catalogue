@@ -450,15 +450,7 @@ h1 {
 }
 
 
-/* MAP */
 
-section.map {
-  min-height: 90vh;
-}
-
-#map {
-  height: 100vh;
-}
 
 
 /* FOOTER */

@@ -1,4 +1,77 @@
-/* MAP TESTS  */
+/* MAP */
+
+section.map {
+  min-height: 90vh;
+}
+
+#map {
+  height: 100vh;
+  position: relative;
+}
+
+/* la legende  */
+
+
+.map_legend {
+  position: absolute;
+  bottom: 1rem;
+  left: 1rem;
+  z-index: 999;
+  width: 20rem;
+  background-color: rgb(var(--fond));
+  color: rgb(var(--text));
+  padding: 2rem; 
+  border: 1px solid rgb(var(--text));
+  box-shadow: 2px 2px 5px 1px rgba(var(--text), 0.5);
+}
+
+.map_legend ul {
+  padding-block: 0.50rem; 
+}
+
+.map_legend li {
+  padding-block: 0.25rem; 
+}
+
+#legend-title{
+  font-size: 1.5rem;
+  text-shadow: 1px 1px 2px rgb(var(--text));
+}
+
+h4 {
+  font-size: 0.85rem; 
+  text-decoration: underline rgb(var(--text));
+}
+
+.popups_legende img {
+  height: 2rem;
+}
+
+.popups_legende img[src*="carriage"] {
+  vertical-align: top; 
+}
+
+.popups_legende img[src*="marker-icon"] {
+  margin-left: 0.5rem;
+}
+
+.popups_legende_parcs{
+  height: 2rem; 
+  width: 2.5rem; 
+  background-color: rgb(var(--parcs-fond));
+  border: 2px solid rgb(var(--parcs-contours));
+}
+
+.legend_wrapper {
+  display: flex;
+  flex-flow: row nowrap;
+  gap: 1rem; 
+  justify-content: space-between;
+}
+
+.legend_wrapper p{
+  font-size: 0.85rem; 
+}
 
 /* les poi  */
 
@@ -7,8 +80,8 @@
   margin-bottom: 0.25rem;
 }
 
-.popup-content h3{
-    font-size: 1.125rem !important;
+.popup-content h3 {
+  font-size: 1.125rem !important;
 }
 
 /* Base du cluster */
