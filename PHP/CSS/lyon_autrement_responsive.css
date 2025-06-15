@@ -1,6 +1,27 @@
 /* MEDIA QUERIES  */
+@media screen and (max-width: 480px) {
+    #toggle_legend {
+        display: block;
+    }
+
+    #legend {
+        display: none;
+    }
+
+    #legend.visible {
+        display: block;
+    }
+}
 
 @media screen and (min-width: 768px) {
+
+    #legend {
+        display: block;
+    }
+
+    #toggle-legend {
+        display: none;
+    }
 
     h1 {
         font-size: 3rem;
@@ -98,6 +119,48 @@
         /* 60px */
     }
 
+
+    /* header  */
+
+        h1 {
+        font-size: 3.5rem;
+    }
+
+
+    nav.contacts_header {
+        display: flex;
+        flex-flow: column;
+    }
+
+    .burger_menu {
+        display: none;
+    }
+
+
+    .title_logo {
+        min-width: 20rem;
+        width: 50rem;
+    }
+
+    .title_logo h2 {
+        font-size: 1.5rem;
+        flex: 1 1 auto;
+        text-align: start;
+    }
+
+    .nav_toggle_container {
+        flex-flow: row-reverse nowrap;
+        gap: 2rem;
+    }
+
+    .contacts_header ul {
+        flex-flow: row nowrap;
+        gap: clamp(0.5rem, 2vw, 1rem);
+    }
+
+    ul li {
+        font-size: clamp(1rem, 1.5vw, 1.5rem);;
+    }
     /* footer  */
 
 
@@ -139,6 +202,14 @@
 
 
 @media (min-width: 1024px) {
+
+    #legend {
+        display: block;
+    }
+
+    #toggle_legend {
+        display: none;
+    }
 
     h1 {
         font-size: 4rem;

@@ -79,6 +79,11 @@ td pre {
   overflow-y: scroll;
 }
 
+td span {
+  display: inline-block;
+  padding-block: 0.25rem;
+}
+
 /* les boutons  */
 
 .btn {

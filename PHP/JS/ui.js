@@ -32,3 +32,9 @@ toggleBtn.forEach(toggle => {
     }
   });
 });
+
+// toggle la legende 
+
+document.getElementById("toggle_legend").addEventListener("click", () => {
+  document.getElementById("legend").classList.toggle("visible");
+});

@@ -10,6 +10,17 @@ section.map {
 }
 
 /* la legende  */
+#toggle_legend {
+  display: none; 
+  position: absolute;
+  z-index: 999;
+  bottom: 20rem;
+  left: 1rem;
+  background-color: rgb(var(--fond));
+  padding: 0.5rem;
+  border: 1px solid rgb(var(--text));
+  box-shadow: 2px 2px 5px 1px rgba(var(--text), 0.5);
+}
 
 
 .map_legend {
@@ -20,44 +31,51 @@ section.map {
   width: 20rem;
   background-color: rgb(var(--fond));
   color: rgb(var(--text));
-  padding: 2rem; 
+  padding: 2rem;
   border: 1px solid rgb(var(--text));
   box-shadow: 2px 2px 5px 1px rgba(var(--text), 0.5);
 }
 
+.fa-solid .fa-question {
+  font-size: 1rem;
+  color: rgb(var(--text));
+}
+
 .map_legend ul {
-  padding-block: 0.50rem; 
+  padding-block: 0.50rem;
 }
 
 .map_legend li {
-  padding-block: 0.25rem; 
+  padding-block: 0.25rem;
 }
 
-#legend-title{
+#legend-title {
   font-size: 1.5rem;
   text-shadow: 1px 1px 2px rgb(var(--text));
+  margin-bottom: 0.15rem;
 }
 
 h4 {
-  font-size: 0.85rem; 
+  font-size: 0.85rem;
   text-decoration: underline rgb(var(--text));
 }
 
 .popups_legende img {
   height: 2rem;
+  margin-bottom: 0.125rem;
 }
 
 .popups_legende img[src*="carriage"] {
-  vertical-align: top; 
+  vertical-align: top;
 }
 
 .popups_legende img[src*="marker-icon"] {
   margin-left: 0.5rem;
 }
 
-.popups_legende_parcs{
-  height: 2rem; 
-  width: 2.5rem; 
+.popups_legende_parcs {
+  height: 2rem;
+  width: 2.5rem;
   background-color: rgb(var(--parcs-fond));
   border: 2px solid rgb(var(--parcs-contours));
 }
@@ -65,12 +83,12 @@ h4 {
 .legend_wrapper {
   display: flex;
   flex-flow: row nowrap;
-  gap: 1rem; 
+  gap: 1rem;
   justify-content: space-between;
 }
 
-.legend_wrapper p{
-  font-size: 0.85rem; 
+.legend_wrapper p {
+  font-size: 0.85rem;
 }
 
 /* les poi  */
@@ -82,6 +100,13 @@ h4 {
 
 .popup-content h3 {
   font-size: 1.125rem !important;
+}
+
+.popup-img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 0.5rem;
+  margin-top: 0.5rem;
 }
 
 /* Base du cluster */

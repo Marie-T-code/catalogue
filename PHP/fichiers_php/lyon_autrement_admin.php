@@ -64,13 +64,16 @@
                                     <pre><?= $poi['geom'] ?></pre>
                                 </details>
                             </td>
-                            <td><a href="voir_poi.php?id=<?= $poi['id_qgis'] ?>"
-                                    aria-label="Voir le POI <?= $poi['id_qgis'] ?> – <?= htmlspecialchars($poi['nom']) ?>">voir</a>
-                                <a href="modifier_poi.php?id=<?= $poi['id_qgis'] ?>"
-                                    aria-label="Modifier le POI <?= $poi['id_qgis'] ?> – <?= htmlspecialchars($poi['nom']) ?>">Modifier</a>
-                                <a href="supprimer_poi.php?id=<?= $poi['id_qgis'] ?>"
-                                    aria-label="Supprimer le POI <?= $poi['id_qgis'] ?> – <?= htmlspecialchars($poi['nom']) ?>"
-                                    onclick="return confirm('Supprimer ce point ?')">Supprimer</a>
+                            <td><span><a href="voir_poi.php?id=<?= $poi['id_qgis'] ?>"
+                                        aria-label="Voir le POI <?= $poi['id_qgis'] ?> – <?= htmlspecialchars($poi['nom']) ?>">voir</a>
+                                </span>
+                                <span><a href="modifier_poi.php?id=<?= $poi['id_qgis'] ?>"
+                                        aria-label="Modifier le POI <?= $poi['id_qgis'] ?> – <?= htmlspecialchars($poi['nom']) ?>">Modifier</a>
+                                </span>
+                                <span><a href="supprimer_poi.php?id=<?= $poi['id_qgis'] ?>"
+                                        aria-label="Supprimer le POI <?= $poi['id_qgis'] ?> – <?= htmlspecialchars($poi['nom']) ?>"
+                                        onclick="return confirm('Supprimer ce point ?')">Supprimer</a>
+                                </span>
                             </td>
                             <!-- onclick="return confirm ('...')" est natif au HTML, n'a pas besoin de script JS, et marche même en statique  -->
                         </tr>

@@ -322,7 +322,7 @@ li a {
   position: relative;
   background: var(--text);
   border-radius: 200px;
-  box-shadow: inset 0px 5px 15px rgba(var(--fond), 0.4), inset 0px -5px 15px rgba(var(--text), 0.4);
+  box-shadow: inset 0px 7px 15px rgba(var(--buttons-clair), 0.6), inset 0px -7px 15px rgba(var(--text), 0.6);
   transition: all 0.3s ease;
 }
 

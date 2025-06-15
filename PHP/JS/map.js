@@ -91,8 +91,7 @@ fetch('../fichiers_php/fetch_poi.php')
         const nom = feature.properties.nom || 'Sans nom';
         const description = feature.properties.description || '';
         const type = feature.properties.type || 'inconnu';
-        const photo = feature.properties.photo || 'inconnu'; // <-- tu avais oublié aussi cette ligne ici 👀
-
+        const photo = feature.properties.photo || 'inconnu'; 
         const iconPath = typeIcons[type] || null;
         const iconHtml = iconPath
           ? `<img src="${iconPath}" alt="${type}" class="popup-icon">`
@@ -177,18 +176,19 @@ fetch('../fichiers_php/fetch_parcs.php')
         const adresse = feature.properties.address_name || '';
         const photo = feature.properties.photo || 'inconnu';
 
-        let imgHTML = '';
-        if (photo && photo !== 'inconnu') {
+        let imageHTML = '';
+        if (photo && photo !== '0' && photo.trim() !== '') {
           imageHTML = `<img src="${photo}" alt="Photo de ${nom}" class="popup-img">`;
         }
 
         const popupContent = `
           <div class="popup_content popup-${adresse.toLowerCase()}">
            <h3 class="popup_text">${nom}</h3>
-           <img src="${imgHTML}">
+           ${imageHTML}
           </div>
         `;
         layer.bindPopup(popupContent);
+        console.log("feature.properties.photo :", feature.properties.photo);
       }
     }).addTo(map);
   }); 

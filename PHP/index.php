@@ -53,7 +53,8 @@
         </section>
         <section class="map">
             <div id="map">
-                <div class="map_legend" role="region" aria-labelledby="legend-title">
+                <button id="toggle_legend"><i class="fa-solid fa-question"></i></button>
+                <div class="map_legend" id="legend" role="region" aria-labelledby="legend-title">
                     <h3 id="legend-title">Légende</h3>
                     <h4>Les points d'intérêts</h4>
                     <ul>

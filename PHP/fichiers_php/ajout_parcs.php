@@ -11,12 +11,8 @@ if ($_POST) {
         && isset($_POST["photo"])
         && isset($_POST["geometry"])
         && !empty($_POST["id_qgis"])
-        && !empty($_POST["nom"])
-        && !empty($_POST["numvoie"])
-        && !empty($_POST["adresse"])
         && !empty($_POST["CP"])
         && !empty($_POST["commune"])
-        && !empty($_POST["photo"])
         && !empty($_POST["geometry"])
     ) {
         $id_qgis = strip_tags($_POST["id_qgis"]);
@@ -26,7 +22,7 @@ if ($_POST) {
         $CP = strip_tags($_POST["CP"]);
         $commune = strip_tags($_POST["commune"]);
         $photo = strip_tags($_POST["photo"]);
-        $geometry = strip_tags($_POST["geometry"]);
+        $geometry = ($_POST["geometry"]);
         require_once("db.php");
         $sql = "INSERT INTO parcs (id_qgis, nom, numvoie, address_name, address_code_postal, address_locality, photo, geom)
 VALUES (:id_qgis, :nom, :numvoie, :adresse, :cp, :commune, :photo, ST_SetSRID(ST_GeomFromGeoJSON(:geometry), 4326));";
@@ -39,7 +35,12 @@ VALUES (:id_qgis, :nom, :numvoie, :adresse, :cp, :commune, :photo, ST_SetSRID(ST
         $query->bindValue(":commune", $commune, PDO::PARAM_STR);
         $query->bindValue(":photo", $photo, PDO::PARAM_STR);
         $query->bindValue(":geometry", $geometry, PDO::PARAM_STR);
-        $query->execute();
+        try {
+            $query->execute();
+        } catch (PDOException $e) {
+            echo "Erreur : " . $e->getMessage();
+            exit;
+        }
         require("disconnect.php");
         header("Location: lyon_autrement_admin.php");
         exit;
@@ -78,19 +79,19 @@ VALUES (:id_qgis, :nom, :numvoie, :adresse, :cp, :commune, :photo, ST_SetSRID(ST
                 <label for="nom">Nom du parc</label>
                 <input type="text" name="nom" id="nom" required>
             </div>
-            <div class="wrapper_form"></div>
-            <label for="photo">photo</label>
-            <input type="text" name="photo" id="photo">
+            <div class="wrapper_form">
+                <label for="photo">photo</label>
+                <input type="text" name="photo" id="photo">
             </div>
             <fieldset>
                 <legend class="sous-fieldset"> Adresse</legend>
                 <div class="wrapper_form">
                     <label for="numvoie">numéro et voie</label>
-                    <input type="text" name="numvoie" id="numvoie" required>
+                    <input type="text" name="numvoie" id="numvoie">
                 </div>
                 <div class="wrapper_form">
                     <label for="adresse">adresse</label>
-                    <input type="text" name="adresse" id="adresse" required>
+                    <input type="text" name="adresse" id="adresse">
                 </div>
                 <div class="wrapper_form">
                     <label for="CP">code postal</label>
