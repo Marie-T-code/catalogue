@@ -30,7 +30,7 @@ if ($_POST) {
         $commune = strip_tags($_POST["commune"]);
         $description = strip_tags($_POST["description"]);
         $photo = strip_tags($_POST["photo"]);
-        $geometry = strip_tags($_POST["geometry"]);
+        $geometry = ($_POST["geometry"]);
         require_once("db.php");
         $sql = "INSERT INTO poi (id_qgis, nom, type, address_name, address_code_postal, address_locality, description, photo, geom)
 VALUES (:id_qgis, :nom, :type, :adresse, :cp, :commune, :description, :photo, ST_SetSRID(ST_GeomFromGeoJSON(:geometry), 4326));";
