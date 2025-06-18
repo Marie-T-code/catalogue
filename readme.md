@@ -65,3 +65,9 @@ Développé dans le cadre d’un bootcamp fullstack (HTML/CSS/JS, PHP, PostgreSQ
 ---
 bonus : faire des arbo dans un .md ? 
 https://tree.nathanfriend.com/ 
+
+--- 
+
+## telecharger les tuiles et la carte géoréférencee 
+
+http://bit.ly/3SMGrvY 
